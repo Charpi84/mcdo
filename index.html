@@ -7,6 +7,70 @@
 	</head>
 <body>
 	
+	<section class="categories">
+		<div class="container">
+			<div class="row">
+				<div class="grid">
+					<div class="categorie">
+						<button class="categorie-btn" onclick="openCategorie('burgers')">
+							<img src="assets/images/big_mac.webp" alt="sandwich Big mac">
+							<h3>Burgers</h3>
+						</button>
+					</div>
+					<div class="categorie">
+						<button class="categorie-btn" onclick="openCategorie('sides')">
+							<img src="assets/images/frites_moyennes.webp" alt="une part de frites moyennes">
+							<h3>Sides</h3>
+						</button>
+					</div>
+					<div class="categorie">
+						<button class="categorie-btn" onclick="openCategorie('drinks')">
+							<img src="assets/images/eau_by_mcdo.webp" alt="eau by McDo">
+							<h3>Drinks</h3>
+						</button>
+					</div>
+					<div class="categorie">
+						<button class="categorie-btn" onclick="openCategorie('desserts')">
+							<img src="assets/images/mcflurry_oreo.webp" alt="Glaces Mc Fleury">
+							<h3>Desserts</h3>
+						</button>
+					</div>
+					<div class="categorie">
+						<button class="categorie-btn" onclick="openCategorie('menus')">
+							<img src="assets/images/menu_best_of_big_mac.webp" alt="Menu Best Of Big mac">
+							<h3>Menus</h3>
+						</button>
+					</div>
+					<div class="categorie">
+						<button class="categorie-btn" onclick="openCategorie('happyMeal')">
+							<img src="assets/images/happy_meal_cheeseburger.webp" alt="Menu Happy Meal">
+							<h3>HappyMeal</h3>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="detailCategorie">
+		<div class="container">
+			<div class="row">
+				<div id="detailCategorieGrid" class="grid">
+					<div class="card">
+						<button class="detail-btn" onclick="ajouterPanier()">
+							<img src="" alt="">
+							<h3>name</h3>
+							<p class="prix">price</p>
+						</button>
+						<button class="info-btn" onclick="afficherInformation()">i</button>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+
 </body>
 	<script src="script.js"></script>
 </html>
