@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Document</title>
-	</head>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<title>McDonald's</title>
+</head>
+
 <body>
 	
 	<section class="categories">
@@ -71,6 +74,48 @@
 	</section>
 
 
+	<header class="d-none">
+		<button class="d-none" onclick="afficherCategorie()">retour</button>
+		<!-- classe d-none pour enlever le bouton dans la page catégories, et le header pour ne pas l'afficher sur la home et choix de commande-->
+		<h2>Titre de la page</h2>
+	</header>
+	<main>
+		<section class="container">
+			<!--Info gerer en js c'est a dire ajout de deux cards pour la commande (sur place ou emporter)-->
+			<div class="cards">
+
+
+				<button onclick="afficherCategorie()">
+					<div class="card-choice">
+						<img src="assets/images/icons/emporter.png" alt="a emporter">
+						<h2>A Emporter</h2>
+					</div>
+				</button>
+
+				<button onclick="afficherCategorie()">
+					<div class="card-choice">
+						<img src="assets/images/icons/service.svg" alt="sur place">
+						<h2>Sur Place</h2>
+					</div>
+				</button>
+			
+			</div>
+			
+		</section>
+	</main>
 </body>
-	<script src="script.js"></script>
+<script src="script.js"></script>
+
 </html>
+
+ <div class="home">
+		<div class="titre">
+			<h1>McDonald's</h1>
+		</div>
+		<div class="fullscreen">
+			<img src="assets/images/backgroung-mcdo.avif" alt="">
+		</div>
+		<div class="btn-order">
+			<button class="start-order" onclick="openCategories()">Appuyer pour commander</button>
+		</div>
+	</div> 
