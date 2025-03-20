@@ -6,7 +6,7 @@
       "description": "Deux steaks hachés, cheddar fondu, oignons, cornichons et la sauce inimitable, dans un pain avec graines de sésame.",
       "price": 5.20,
       "calories": 503,
-      "image": "images/big_mac.png"
+      "image": "assets/images/big_mac.webp"
     },
     {
       "id": 2,
@@ -14,7 +14,7 @@
       "description": "Steak haché, fromage fondu, cornichons, oignons, ketchup et moutarde, dans un pain moelleux.",
       "price": 2.50,
       "calories": 301,
-      "image": "images/cheeseburger.png"
+      "image": "assets/images/cheeseburger.webp"
     },
     {
       "id": 3,
@@ -22,7 +22,7 @@
       "description": "Filet de poulet pané, laitue croquante et sauce spéciale, dans un pain moelleux.",
       "price": 5.00,
       "calories": 445,
-      "image": "images/mcchicken.png"
+      "image": "assets/images/mcchicken.webp"
     },
     {
       "id": 4,
@@ -30,7 +30,7 @@
       "description": "Steak haché, fromage fondu, moutarde, ketchup, oignons et cornichons, dans un pain moelleux.",
       "price": 5.50,
       "calories": 517,
-      "image": "images/royal_cheese.png"
+      "image": "assets/images/royal_cheese.webp"
     },
     {
       "id": 5,
@@ -38,7 +38,7 @@
       "description": "Filet de poisson pané, fromage fondu et sauce tartare, dans un pain moelleux.",
       "price": 4.50,
       "calories": 331,
-      "image": "images/filet_o_fish.png"
+      "image": "assets/images/filet_o_fish.webp"
     }
   ],
   "sides": [
@@ -48,7 +48,7 @@
       "description": "Portion de frites dorées et croustillantes.",
       "price": 2.20,
       "calories": 340,
-      "image": "images/frites_moyennes.png"
+      "image": "assets/images/frites_moyennes.webp"
     },
     {
       "id": 11,
@@ -56,7 +56,7 @@
       "description": "Quartiers de pommes de terre assaisonnés et dorés au four.",
       "price": 2.50,
       "calories": 298,
-      "image": "images/deluxe_potatoes.png"
+      "image": "assets/images/deluxe_potatoes.webp"
     },
     {
       "id": 12,
@@ -64,7 +64,7 @@
       "description": "Mélange de jeunes pousses et de légumes croquants.",
       "price": 2.00,
       "calories": 15,
-      "image": "images/ptite_salade.png"
+      "image": "assets/images/ptite_salade.webp"
     }
   ],
   "drinks": [
@@ -74,7 +74,7 @@
       "description": "Boisson gazeuse rafraîchissante.",
       "price": 2.00,
       "calories": 140,
-      "image": "images/coca_cola.png"
+      "image": "assets/images/coca_cola.webp"
     },
     {
       "id": 21,
@@ -82,7 +82,7 @@
       "description": "Bouteille d'eau minérale naturelle.",
       "price": 1.50,
       "calories": 0,
-      "image": "images/eau_by_mcdo.png"
+      "image": "assets/images/eau_by_mcdo.webp"
     },
     {
       "id": 22,
@@ -90,7 +90,7 @@
       "description": "Jus d'orange 100% pur jus.",
       "price": 2.20,
       "calories": 120,
-      "image": "images/minute_maid_orange.png"
+      "image": "assets/images/minute_maid_orange.webp"
     }
   ],
   "desserts": [
@@ -100,7 +100,7 @@
       "description": "Glace onctueuse nappée de sauce chocolat.",
       "price": 2.70,
       "calories": 280,
-      "image": "images/sundae_chocolat.png"
+      "image": "assets/images/sundae_chocolat.webp"
     },
     {
       "id": 31,
@@ -108,7 +108,7 @@
       "description": "Glace mélangée à des morceaux de biscuits Oreo®.",
       "price": 3.00,
       "calories": 340,
-      "image": "images/mcflurry_oreo.png"
+      "image": "assets/images/mcflurry_oreo.webp"
     },
     {
       "id": 32,
@@ -116,7 +116,7 @@
       "description": "Beignet moelleux nappé de chocolat.",
       "price": 2.30,
       "calories": 452,
-      "image": "images/donut_chocolat.png"
+      "image": "assets/images/donut_chocolat.webp"
     }
   ],
   "menus": [
@@ -127,7 +127,7 @@
       "sideOptions": [10, 11, 12],
       "drinkOptions": [20, 21, 22],
       "price": 8.50,
-      "image": "images/menu_best_of_big_mac.png"
+      "image": "assets/images/menu_best_of_big_mac.webp"
     },
     {
       "id": 101,
@@ -136,7 +136,7 @@
       "sideOptions": [10, 11, 12],
       "drinkOptions": [20, 21, 22],
       "price": 9.00,
-      "image": "images/menu_maxi_best_of_mcchicken.png"
+      "image": "assets/images/menu_maxi_best_of_mcchicken.webp"
     }
   ],
   "happyMeal": [
@@ -148,7 +148,7 @@
       "drinkOptions": [21, 22],
       "toyOptions": ["Jouet Pokémon", "Livre Disney"],
       "price": 4.80,
-      "image": "images/happy_meal_cheeseburger.png"
+      "image": "assets/images/happy_meal_cheeseburger.webp"
     },
     {
       "id": 201,
@@ -158,7 +158,7 @@
       "drinkOptions": [21, 22],
       "toyOptions": ["Jouet Pokémon", "Livre Disney"],
       "price": 4.80,
-      "image": "images/happy_meal_nuggets.png"
+      "image": "assets/images/happy_meal_nuggets.webp"
     }
   ]
 }
