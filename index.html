@@ -9,7 +9,65 @@
 </head>
 
 <body>
-	
+	<div id="accueilBorne" class="fullscreen"> <!--HOME-->
+		<div class="start-order" onclick="openCategories()">
+			<div class="titre">
+				<h1>McDonald's</h1>
+			</div>
+			<div class="fullscreen-home">
+				<img src="assets/images/backgroung-mcdo.avif" alt="Image de fond McDonald's">
+			</div>
+			<div class="bottom-msg">
+				<p><span class="mcdo">M</span>Appuyez sur l'écran<span class="mcdo">M</span></p>
+			</div>
+		</div>
+	</div>
+
+	<div id="choixService" class="fullscreen"> <!--CHOIX SERVICE-->
+		<header>
+			<button class="d-none" onclick="afficherCategorie()">retour</button>
+			<!-- classe d-none pour enlever le bouton dans la page catégories, et le header pour ne pas l'afficher sur la home et choix de commande-->
+			<h2>Titre de la page</h2>
+		</header>
+		<main>
+			<section class="container">
+				<!--Info gerer en js c'est a dire ajout de deux cards pour la commande (sur place ou emporter)-->
+				<div class="cards">
+					<div class="card" onclick="afficherCategorie()">
+						<div class="card-choice">
+							<img src="assets/images/icons/emporter.png" alt="a emporter">
+							<h2>A Emporter</h2>
+						</div>
+					</div>
+
+					<div class="card" onclick="afficherCategorie()">
+						<div class="card-choice">
+							<img src="assets/images/icons/service.svg" alt="sur place">
+							<h2>Sur Place</h2>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="panier d-none">
+			<div class="panier-info">
+				<h2>Ma Commande:</h2>
+			</div>
+			<div id="afficherPanier" class="afficher-panier">
+				<!--géré en js-->
+			</div>
+			<div id="totalPanier" class="total">
+				<button onclick="validerPanier()">Valider et Payer</button>
+				<p>0,00€</p>
+			</div>
+		</footer>
+	</div>
+
+	<header class="d-none">
+		<button class="d-none" onclick="afficherCategorie()">retour</button>
+		<!-- classe d-none pour enlever le bouton dans la page catégories, et le header pour ne pas l'afficher sur la home et choix de commande-->
+		<h2>Titre de la page</h2>
+	</header>
 	<section class="categories">
 		<div class="container">
 			<div class="row">
@@ -54,6 +112,8 @@
 			</div>
 		</div>
 	</section>
+
+
 	<section class="detailCategorie">
 		<div class="container">
 			<div class="row">
@@ -66,7 +126,7 @@
 						</button>
 						<button class="info-btn" onclick="afficherInformation()">i</button>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
@@ -74,48 +134,7 @@
 	</section>
 
 
-	<header class="d-none">
-		<button class="d-none" onclick="afficherCategorie()">retour</button>
-		<!-- classe d-none pour enlever le bouton dans la page catégories, et le header pour ne pas l'afficher sur la home et choix de commande-->
-		<h2>Titre de la page</h2>
-	</header>
-	<main>
-		<section class="container">
-			<!--Info gerer en js c'est a dire ajout de deux cards pour la commande (sur place ou emporter)-->
-			<div class="cards">
-
-
-				<button onclick="afficherCategorie()">
-					<div class="card-choice">
-						<img src="assets/images/icons/emporter.png" alt="a emporter">
-						<h2>A Emporter</h2>
-					</div>
-				</button>
-
-				<button onclick="afficherCategorie()">
-					<div class="card-choice">
-						<img src="assets/images/icons/service.svg" alt="sur place">
-						<h2>Sur Place</h2>
-					</div>
-				</button>
-			
-			</div>
-			
-		</section>
-	</main>
 </body>
 <script src="script.js"></script>
 
 </html>
-
- <div class="home">
-		<div class="titre">
-			<h1>McDonald's</h1>
-		</div>
-		<div class="fullscreen">
-			<img src="assets/images/backgroung-mcdo.avif" alt="">
-		</div>
-		<div class="btn-order">
-			<button class="start-order" onclick="openCategories()">Appuyer pour commander</button>
-		</div>
-	</div> 
