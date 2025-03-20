@@ -42,4 +42,28 @@ display: block;
   font-size: 5rem;
 }
 
+.cards{
+  display: flex;
+  justify-content: center;
+}
+.card-choice{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cards button{
+  cursor: pointer;
+  border: solid 1px black;
+  border-radius: 20px;
+  width: 400px;
+  height: 400px;
+  background-color: #ffffff;
+}
+
+.card-choice img{
+  width: 80%;
+}
+
 /*# sourceMappingURL=main.css.map */

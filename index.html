@@ -9,7 +9,41 @@
 </head>
 
 <body>
-	<div class="home">
+	<header class="d-none">
+		<button class="d-none" onclick="afficherCategorie()">retour</button>
+		<!-- classe d-none pour enlever le bouton dans la page catégories, et le header pour ne pas l'afficher sur la home et choix de commande-->
+		<h2>Titre de la page</h2>
+	</header>
+	<main>
+		<section class="container">
+			<!--Info gerer en js c'est a dire ajout de deux cards pour la commande (sur place ou emporter)-->
+			<div class="cards">
+
+
+				<button onclick="afficherCategorie()">
+					<div class="card-choice">
+						<img src="assets/images/icons/emporter.png" alt="a emporter">
+						<h2>A Emporter</h2>
+					</div>
+				</button>
+
+				<button onclick="afficherCategorie()">
+					<div class="card-choice">
+						<img src="assets/images/icons/service.svg" alt="sur place">
+						<h2>Sur Place</h2>
+					</div>
+				</button>
+			
+			</div>
+			
+		</section>
+	</main>
+</body>
+<script src="script.js"></script>
+
+</html>
+
+ <div class="home">
 		<div class="titre">
 			<h1>McDonald's</h1>
 		</div>
@@ -17,10 +51,6 @@
 			<img src="assets/images/backgroung-mcdo.avif" alt="">
 		</div>
 		<div class="btn-order">
-			<button id="startOrder" class="start-order" onclick="openCategories()">Appuyer pour commander</button>
+			<button class="start-order" onclick="openCategories()">Appuyer pour commander</button>
 		</div>
-	</div>
-</body>
-<script src="script.js"></script>
-
-</html>
+	</div> 
