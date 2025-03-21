@@ -2,6 +2,7 @@ let donnees = [];
 let detailCategorieGrid = document.getElementById('detailCategorieGrid');
 let containerProduit = document.getElementById('containerProduit');
 
+
 fetch('mcdo.json')
     .then(function(reponse){
         if (!reponse.ok) {
@@ -88,11 +89,11 @@ fetch('mcdo.json')
                     break;// on n'oublie le break pour arreté la boucle quand à trouvé le bon id pour afficher le bon produit
                 }
             }
-            
+            console.log("Produits finaux :", produits);
         }
         let produits = donnees[categorie]; //sans cette ligne, la console indique que produits n'est pas défini 
         // et donc la card produit ne s'affiche pas.
-        console.log("Produits finaux :", produits);
+        
         containerProduit.innerHTML = "";
 
         
