@@ -23,10 +23,19 @@
   position: relative;
 }
 
-#choixService{
-  justify-content: center;
+.service{
+width: 100vw;
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 10rem;
 }
 
+
+h3{
+  text-align: center;
+}
 .start-order {
   display: flex;
   flex-direction: column;
@@ -79,7 +88,7 @@
 
 .mcdo{
   font-family: "mcdo";
-  color: #ffc836 ;
+  color: #ffbc0d ;
   margin: 0 1rem;
   font-size: 8rem;
 }
@@ -101,7 +110,7 @@ button{
   width: 200px;
   height: 70px;
   border: none;
-  background-color: #ffc836;
+  background-color: #ffbc0d;
   border-radius: 10px;
   font-size: 2rem;
   text-transform: capitalize;
@@ -113,6 +122,7 @@ button{
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .cards {
@@ -145,6 +155,26 @@ button{
   width: 100%;
   max-width: 300px;
 }
+.cards-lang{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  gap: 5rem;
+  column-gap: 10px;
+}
+.langage{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 2rem;
+  width: 400px;
+  height: 100px;
+  background-color: #f1f1f1;
+  border: solid 2px #c9c9c9;
+  border-radius: 10px;
+
+}
 
 footer{
   display: flex;
@@ -160,7 +190,7 @@ footer{
   height: 70px;
   border-radius: 15px;
   box-shadow: 0 2px 15px rgb(0, 0, 0);
-  background-color: #264F36;
+  background-color: #264f36;
   color: #ffffff;
 }
 
@@ -205,6 +235,7 @@ footer{
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.384);
   border-radius: 15px;
   cursor: pointer;
+  position: relative;
 }
 
 .card img{
@@ -212,6 +243,23 @@ footer{
   max-width: 250px;
 }
 
+.info-btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  background-color: #c9c9c9;
+  width: 70px;
+  height: 70px;
+  border-bottom-left-radius: 50%;
+  text-transform: lowercase;
+}
+
+.modal-product{
+  width: 90vw;
+  height: 90vh;
+  border: solid 15px #264F36;
+}
 /*.d-none{
   display:none
 }

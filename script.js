@@ -6,7 +6,7 @@ let containerCommande = document.getElementById('containerCommande');
 
 
 fetch('mcdo.json')
-    .then(function(reponse){
+    .then(function (reponse) {
         if (!reponse.ok) {
             throw new Error("Erreur : le fichier JSON n’a pas pu être chargé.");
         }
@@ -14,29 +14,29 @@ fetch('mcdo.json')
         return reponse.json();
     })
 
-    .then(function(data){
+    .then(function (data) {
         donnees = data;
         console.log(donnees);
         openCategorie();
     })
 
-    .catch(function(error) {
+    .catch(function (error) {
         console.error("Erreur lors du chargement du fichier JSON: ", error);
     });
 
-   
 
-    function openCategorie(categorie) {
-                
-        let produits = donnees[categorie];
 
-        detailCategorieGrid.innerHTML = "";
+function openCategorie(categorie) {
 
-        for (let i = 0; i < produits.length; i++) {
-            let produit = produits[i];
+    let produits = donnees[categorie];
+
+    detailCategorieGrid.innerHTML = "";
+
+    for (let i = 0; i < produits.length; i++) {
+        let produit = produits[i];
 
             let card = document.createElement("div");
-            let contenuCard = `<div class = "card" onclick="ajouterPanier(${produit.id})">
+            let contenuCard = `<div class="card" onclick="ajouterPanier(${produit.id})">
 							        <img src="${produit.image}" alt="${produit.name}">
 							        <h3>${produit.name}</h3>
 							        <p class="prix">${produit.price}€</p>
@@ -49,8 +49,8 @@ fetch('mcdo.json')
         }
     }
 
-    function afficherInformation(id) {
-        
+function afficherInformation(id) {
+
 
         for (let categorie in donnees) { // on utilise for variable in car on veut boucler sur chaque propriété du tableau données.
             //dans ce cas, variable est categorie qui correspond  dans le json a burgers, sides, desserts
@@ -86,17 +86,17 @@ fetch('mcdo.json')
                                             <div class="cde-produit">
                                                 <button class="cde-btn" onclick="ajouterPanier(${produit.id})">ajouter à la commande</button>
                                             </div>`
-                    cardProduit.innerHTML = contenuCardProduit;
-                    containerProduit.appendChild(cardProduit);
-                    break;// on n'oublie le break pour arreté la boucle quand à trouvé le bon id pour afficher le bon produit
-                }
+                cardProduit.innerHTML = contenuCardProduit;
+                containerProduit.appendChild(cardProduit);
+                break;// on n'oublie le break pour arreté la boucle quand à trouvé le bon id pour afficher le bon produit
             }
-            console.log("Produits finaux :", produits);
         }
-        let produits = donnees[categorie]; //sans cette ligne, la console indique que produits n'est pas défini 
-        // et donc la card produit ne s'affiche pas.
-        
-        containerProduit.innerHTML = "";
+        console.log("Produits finaux :", produits);
+    }
+    let produits = donnees[categorie]; //sans cette ligne, la console indique que produits n'est pas défini 
+    // et donc la card produit ne s'affiche pas.
+
+    containerProduit.innerHTML = "";
 
         
     }
@@ -166,21 +166,21 @@ fetch('mcdo.json')
     }
 
 
-     /*function openCategorie(burgers) {
-        //let burgers = data.burgers
+/*function openCategorie(burgers) {
+   //let burgers = data.burgers
 
-        for (let i = 0; i < burgers.length; i++) {
-            let card = document.createElement("div");
-            card.classList.add("card");
-            let contenuCard = `<button class="detail-btn" onclick="ajouterPanier()">
-							        <img src="${burgers[i].image}" alt="${burgers[i].name}">
-							        <h3>${burgers[i].name}</h3>
-							        <p class="prix">${burgers[i].price}€</p>
-						        </button>
-						        <button class="info-btn" onclick="afficherInformation()">
-                                    i
-                                </button>`
-            card.innerHTML = contenuCard;
-            detailCategorieGrid.appendChild(card);
-        }
-    }*/
+   for (let i = 0; i < burgers.length; i++) {
+       let card = document.createElement("div");
+       card.classList.add("card");
+       let contenuCard = `<button class="detail-btn" onclick="ajouterPanier()">
+                               <img src="${burgers[i].image}" alt="${burgers[i].name}">
+                               <h3>${burgers[i].name}</h3>
+                               <p class="prix">${burgers[i].price}€</p>
+                           </button>
+                           <button class="info-btn" onclick="afficherInformation()">
+                               i
+                           </button>`
+       card.innerHTML = contenuCard;
+       detailCategorieGrid.appendChild(card);
+   }
+}*/
