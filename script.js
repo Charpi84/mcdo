@@ -1,6 +1,8 @@
 let donnees = [];
 let detailCategorieGrid = document.getElementById('detailCategorieGrid');
 let containerProduit = document.getElementById('containerProduit');
+let commande = [];
+let containerCommande = document.getElementById('containerCommande');
 
 
 fetch('mcdo.json')
@@ -35,11 +37,11 @@ fetch('mcdo.json')
 
             let card = document.createElement("div");
             card.classList.add("card");
-            let contenuCard = `<button class="detail-btn" onclick="ajouterPanier(${produit.id})">
+            let contenuCard = `<div onclick="ajouterPanier(${produit.id})">
 							        <img src="${produit.image}" alt="${produit.name}">
 							        <h3>${produit.name}</h3>
 							        <p class="prix">${produit.price}€</p>
-						        </button>
+						        </div>
 						        <button class="info-btn" onclick="afficherInformation(${produit.id})">
                                     i
                                 </button>`
@@ -82,7 +84,7 @@ fetch('mcdo.json')
                                                 </div>
                                             </div>
                                             <div class="cde-produit">
-                                                <button class="cde-btn" onclick="commander(${produit.id})">Commander</button>
+                                                <button class="cde-btn" onclick="ajouterPanier(${produit.id})">ajouter à la commande</button>
                                             </div>`
                     cardProduit.innerHTML = contenuCardProduit;
                     containerProduit.appendChild(cardProduit);
@@ -98,6 +100,46 @@ fetch('mcdo.json')
 
         
     }
+
+    function ajouterPanier(id) {
+
+        //Pour cette fonction on parcourt le json pour trouvé le produit avec le bon id
+        for (let categorie in donnees) { // on utilise for variable in car on veut boucler sur chaque propriété du tableau données.
+            //dans ce cas, variable est categorie qui correspond  dans le json a burgers, sides, desserts
+            //Cette boucle permet d'éviter de faire une boucle différente pour chaque categorie. A chque tour categorie change de valeur
+            // et donc produits aussi
+            //au 1er tour la boucle va dire que produits correspond à burgers.
+            //dans cette itération, on lance une boucle for sur tous les objets de burgers et donc chaque objet devient la variable produit (ex Big Mac...)
+            //dans cette boucle qui tourne dans la categorie, on cherche le id qui est lié à la fonction onclick crée
+            //pour chaque produit dans la fonction openCategorie 
+            //à la 2eme itération, produits va correspondre à sides et la boucle for parcourrera les objets frites moyennes etc
+            let produits = donnees[categorie];
+            console.log(produits);
+
+            for (let i = 0; i < produits.length; i++) {
+                let produit = produits[i];
+    
+                if(produit.id === id) {
+                    // quand la boucle est sur le bon produit, cette fonction prend l'objet du json
+                    // et l'ajoute dans le tableau commande crée vide.
+                    produit.quantite = 1; // cette partie permet d'ajouter une propriété quantité à mon objet dans le tableau commande
+                    commande.push(produit);
+                    console.log("panier: " + produit.quantite + produit.name);
+
+                }
+            }
+            
+        }
+    }
+
+    /*function afficherPanier() {
+        containerCommande.innerHTML = ""; //Cela permet de vider l'affichage du panier
+
+        for (let i = 0; i < commande.length; i++) {
+            let commandeProduit = document.createElement("div");
+            let contenuCardProduit = `<p>${i + 1}</p>`
+        }
+    }*/
 
 
      /*function openCategorie(burgers) {

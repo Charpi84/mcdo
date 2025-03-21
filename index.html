@@ -10,7 +10,7 @@
 
 <body>
 	<div id="accueilBorne" class="fullscreen"> <!--HOME-->
-		<div class="start-order" onclick="openCategories()">
+		<div class="start-order" onclick="openChoixService()">
 			<div class="titre">
 				<h1>McDonald's</h1>
 			</div>
@@ -24,8 +24,8 @@
 	</div>
 
 	<div id="choixService" class="fullscreen"> <!--CHOIX SERVICE-->
-		<header>
-			<button class="d-none" onclick="afficherCategorie()">retour</button>
+		<header class="d-none">
+			<button  onclick="afficherCategorie()">retour</button>
 			<!-- classe d-none pour enlever le bouton dans la page catégories, et le header pour ne pas l'afficher sur la home et choix de commande-->
 			<h2>Titre de la page</h2>
 		</header>
@@ -62,13 +62,14 @@
 			</div>
 		</footer>
 	</div>
+	
+		<header>
+			<button class="d-none" onclick="afficherCategorie()">retour</button>
+			<!-- classe d-none pour enlever le bouton dans la page catégories, et le header pour ne pas l'afficher sur la home et choix de commande-->
+			<h2>Titre de la page</h2>
+		</header>
 
-	<header class="d-none">
-		<button class="d-none" onclick="afficherCategorie()">retour</button>
-		<!-- classe d-none pour enlever le bouton dans la page catégories, et le header pour ne pas l'afficher sur la home et choix de commande-->
-		<h2>Titre de la page</h2>
-	</header>
-	<section class="categories">
+	<section id="categories" class="fullscreen d-none">
 		<div class="container">
 			<div class="row">
 				<div class="grid">
@@ -156,6 +157,7 @@
 			</div>
 		</div>
 	</section>
+	<div id="containerCommande"></div>
 
 
 </body>
