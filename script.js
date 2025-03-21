@@ -35,11 +35,11 @@ fetch('mcdo.json')
 
             let card = document.createElement("div");
             card.classList.add("card");
-            let contenuCard = `<button class="detail-btn" onclick="ajouterPanier(${produit.id})">
+            let contenuCard = `<div onclick="ajouterPanier(${produit.id})">
 							        <img src="${produit.image}" alt="${produit.name}">
 							        <h3>${produit.name}</h3>
 							        <p class="prix">${produit.price}€</p>
-						        </button>
+						        </div>
 						        <button class="info-btn" onclick="afficherInformation(${produit.id})">
                                     i
                                 </button>`
