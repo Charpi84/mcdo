@@ -36,7 +36,7 @@ fetch('mcdo.json')
             let produit = produits[i];
 
             let card = document.createElement("div");
-            let contenuCard = `<div classe = "card" onclick="ajouterPanier(${produit.id})">
+            let contenuCard = `<div class = "card" onclick="ajouterPanier(${produit.id})">
 							        <img src="${produit.image}" alt="${produit.name}">
 							        <h3>${produit.name}</h3>
 							        <p class="prix">${produit.price}€</p>
@@ -74,7 +74,7 @@ fetch('mcdo.json')
     
                     let cardProduit = document.createElement("div");
                     cardProduit.classList.add("produit");
-                    let contenuCardProduit = `<div class="card">
+                    let contenuCardProduit = `<div class="modal-product">
                                                 <button class="close-btn" onclick="close()">X</button>
                                                 <img src="${produit.image}" alt="${produit.name}">
                                                 <div class="encart-card">
