@@ -10,7 +10,7 @@
 
 <body>
 	<div id="accueilBorne" class="fullscreen"> <!--HOME-->
-		<div class="start-order" onclick="openCategories()">
+		<div class="start-order" onclick="openChoixService()">
 			<div class="titre">
 				<h1>McDonald's</h1>
 			</div>
@@ -24,8 +24,8 @@
 	</div>
 
 	<div id="choixService" class="fullscreen"> <!--CHOIX SERVICE-->
-		<header>
-			<button class="d-none" onclick="afficherCategorie()">retour</button>
+		<header class="d-none">
+			<button onclick="afficherCategorie()">retour</button>
 			<!-- classe d-none pour enlever le bouton dans la page catégories, et le header pour ne pas l'afficher sur la home et choix de commande-->
 			<h2>Titre de la page</h2>
 		</header>
@@ -33,14 +33,14 @@
 			<section class="container">
 				<!--Info gerer en js c'est a dire ajout de deux cards pour la commande (sur place ou emporter)-->
 				<div class="cards">
-					<div class="card" onclick="afficherCategorie()">
+					<div class="card-ch" onclick="afficherCategorie()">
 						<div class="card-choice">
 							<img src="assets/images/icons/emporter.png" alt="a emporter">
 							<h2>A Emporter</h2>
 						</div>
 					</div>
 
-					<div class="card" onclick="afficherCategorie()">
+					<div class="card-ch" onclick="afficherCategorie()">
 						<div class="card-choice">
 							<img src="assets/images/icons/service.png" alt="sur place">
 							<h2>Sur Place</h2>
@@ -63,54 +63,54 @@
 		</footer>
 	</div>
 
-	<header class="d-none">
-		<button class="d-none" onclick="afficherCategorie()">retour</button>
-		<!-- classe d-none pour enlever le bouton dans la page catégories, et le header pour ne pas l'afficher sur la home et choix de commande-->
-		<h2>Titre de la page</h2>
-	</header>
-	<section class="categories">
+	<section id="categories" class="fullscreen">
+		<header class="d-none">
+			<button onclick="afficherCategorie()">retour</button>
+			<!-- classe d-none pour enlever le bouton dans la page catégories, et le header pour ne pas l'afficher sur la home et choix de commande-->
+			<h2>Titre de la page</h2>
+		</header>
 		<div class="container">
 			<div class="row">
 				<div class="grid">
-					<div class="categorie">
-						<button class="categorie-btn" onclick="openCategorie('burgers')">
-							<img src="assets/images/big_mac.webp" alt="sandwich Big mac">
-							<h3>Burgers</h3>
-						</button>
+					<div class="card" onclick="openCategorie('burgers')">
+						<img src="assets/images/big_mac.webp" alt="sandwich Big mac">
+						<h3>Burgers</h3>
 					</div>
-					<div class="categorie">
-						<button class="categorie-btn" onclick="openCategorie('sides')">
-							<img src="assets/images/frites_moyennes.webp" alt="une part de frites moyennes">
-							<h3>Sides</h3>
-						</button>
+					<div class="card" onclick="openCategorie('sides')">
+						<img src="assets/images/frites_moyennes.webp" alt="une part de frites moyennes">
+						<h3>Sides</h3>
 					</div>
-					<div class="categorie">
-						<button class="categorie-btn" onclick="openCategorie('drinks')">
-							<img src="assets/images/eau_by_mcdo.webp" alt="eau by McDo">
-							<h3>Drinks</h3>
-						</button>
+					<div class="card" onclick="openCategorie('drinks')">
+						<img src="assets/images/eau_by_mcdo.webp" alt="eau by McDo">
+						<h3>Drinks</h3>
 					</div>
-					<div class="categorie">
-						<button class="categorie-btn" onclick="openCategorie('desserts')">
-							<img src="assets/images/mcflurry_oreo.webp" alt="Glaces Mc Fleury">
-							<h3>Desserts</h3>
-						</button>
+					<div class="card" onclick="openCategorie('desserts')">
+						<img src="assets/images/mcflurry_oreo.webp" alt="Glaces Mc Fleury">
+						<h3>Desserts</h3>
 					</div>
-					<div class="categorie">
-						<button class="categorie-btn" onclick="openCategorie('menus')">
-							<img src="assets/images/menu_best_of_big_mac.webp" alt="Menu Best Of Big mac">
-							<h3>Menus</h3>
-						</button>
+					<div class="card" onclick="openCategorie('menus')">
+						<img src="assets/images/menu_best_of_big_mac.webp" alt="Menu Best Of Big mac">
+						<h3>Menus</h3>
 					</div>
-					<div class="categorie">
-						<button class="categorie-btn" onclick="openCategorie('happyMeal')">
-							<img src="assets/images/happy_meal_cheeseburger.webp" alt="Menu Happy Meal">
-							<h3>HappyMeal</h3>
-						</button>
+					<div class="card" onclick="openCategorie('happyMeal')">
+						<img src="assets/images/happy_meal_cheeseburger.webp" alt="Menu Happy Meal">
+						<h3>HappyMeal</h3>
 					</div>
 				</div>
 			</div>
 		</div>
+		<footer class="panier d-none">
+			<div class="panier-info">
+				<h2>Ma Commande:</h2>
+			</div>
+			<div id="afficherPanier" class="afficher-panier">
+				<!--géré en js-->
+			</div>
+			<div id="totalPanier" class="total">
+				<button onclick="validerPanier()">Valider et Payer</button>
+				<p>0,00€</p>
+			</div>
+		</footer>
 	</section>
 
 
@@ -118,15 +118,7 @@
 		<div class="container">
 			<div class="row">
 				<div id="detailCategorieGrid" class="grid">
-					<div class="card">
-						<button class="detail-btn" onclick="ajouterPanier()">
-							<img src="" alt="">
-							<h3>name</h3>
-							<p class="prix">price</p>
-						</button>
-						<button class="info-btn" onclick="afficherInformation()">i</button>
-					</div>
-
+					
 				</div>
 			</div>
 		</div>
@@ -135,10 +127,11 @@
 		<div class="container">
 			<div class="row">
 				<div class="produitContainer">
-					<button class="close-btn" onclick="close()">X</button>
-					<div id="containerProduit" class="containerProduit">	
+					
+					<div id="containerProduit" class="containerProduit">
 						<div class="produit">
 							<div class="card">
+								<button class="close-btn" onclick="close()">X</button>
 								<img src="" alt="">
 								<div class="encart-card">
 									<h3>name</h3>
