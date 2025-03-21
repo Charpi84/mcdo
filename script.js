@@ -36,15 +36,14 @@ fetch('mcdo.json')
             let produit = produits[i];
 
             let card = document.createElement("div");
-            card.classList.add("card");
-            let contenuCard = `<div onclick="ajouterPanier(${produit.id})">
+            let contenuCard = `<div classe = "card" onclick="ajouterPanier(${produit.id})">
 							        <img src="${produit.image}" alt="${produit.name}">
 							        <h3>${produit.name}</h3>
 							        <p class="prix">${produit.price}€</p>
-						        </div>
-						        <button class="info-btn" onclick="afficherInformation(${produit.id})">
-                                    i
-                                </button>`
+                                    <button class="info-btn" onclick="afficherInformation(${produit.id})">
+                                        i
+                                    </button>
+						        </div>`
             card.innerHTML = contenuCard;
             detailCategorieGrid.appendChild(card);
         }
@@ -76,6 +75,7 @@ fetch('mcdo.json')
                     let cardProduit = document.createElement("div");
                     cardProduit.classList.add("produit");
                     let contenuCardProduit = `<div class="card">
+                                                <button class="close-btn" onclick="close()">X</button>
                                                 <img src="${produit.image}" alt="${produit.name}">
                                                 <div class="encart-card">
                                                     <h3>${produit.name}</h3>
@@ -117,29 +117,53 @@ fetch('mcdo.json')
             console.log(produits);
 
             for (let i = 0; i < produits.length; i++) {
-                let produit = produits[i];
+                let produit = produits[i]; //cette variable correspond à mon produit qui se trouve dans le json
     
                 if(produit.id === id) {
-                    // quand la boucle est sur le bon produit, cette fonction prend l'objet du json
-                    // et l'ajoute dans le tableau commande crée vide.
-                    produit.quantite = 1; // cette partie permet d'ajouter une propriété quantité à mon objet dans le tableau commande
-                    commande.push(produit);
-                    console.log("panier: " + produit.quantite + produit.name);
+                    //Pour eviter les doublons il faut vérifier si l'id est déjà présent dans le tableau commande.
+                    // Il faut donc refaire un if en intégrant une variable qui sera le produit contenu 
+                    // dans le tableau commande
+                    let produitCommande = ""; // produitCommande sera le produit du tableau commande 
+                    // sur lequel on modifiera la quantité s'il est déjà existant dans le tableau commande
+                        for(let j = 0; j < commande.length; j++) {
+                            if (commande[j].id === id) {
+                                produitCommande = commande[j];
+                                break;
+                            }
+                        }
+                        if (produitCommande) { // cette partie indique que la boucle a trouvé un produit dans la tableau commande 
+                            // avec le même id du produit qu'on veut rajouter
+                            produitCommande.quantite++;
+                        } else {
+                            // si il n'y a pas d'id du produit json dans la commande, cette fonction prend l'objet du json
+                            // et l'ajoute dans le tableau commande.
+                            produit.quantite = 1; // cette partie permet d'ajouter une propriété quantité à mon objet dans le tableau commande
+                            commande.push(produit);
+                            console.log("panier: " + produit.quantite + produit.name);
+                        }
 
                 }
             }
             
         }
+        afficherPanier();
+        
     }
 
-    /*function afficherPanier() {
+    function afficherPanier() {
+        console.log("Le panier s'affiche");
         containerCommande.innerHTML = ""; //Cela permet de vider l'affichage du panier
 
         for (let i = 0; i < commande.length; i++) {
+            let produit = commande[i];
             let commandeProduit = document.createElement("div");
-            let contenuCardProduit = `<p>${i + 1}</p>`
+            let contenuCardProduit =    `<p>${produit.quantite}</p>
+                                        <p> X </p>
+                                        <p>${produit.name}</p>`
+            commandeProduit.innerHTML = contenuCardProduit;
+            containerCommande.appendChild(commandeProduit);
         }
-    }*/
+    }
 
 
      /*function openCategorie(burgers) {
