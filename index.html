@@ -9,171 +9,24 @@
 </head>
 
 <body>
-	<div id="accueilBorne" class="fullscreen"> <!--HOME-->
-		<div class="start-order" onclick="openChoixService()">
-			<div class="titre">
-				<h1>McDonald's</h1>
-			</div>
-			<div class="fullscreen-home">
-				<img src="assets/images/backgroung-mcdo.avif" alt="Image de fond McDonald's">
-			</div>
-			<div class="bottom-msg">
-				<p><span class="mcdo">M</span>Appuyez sur l'écran<span class="mcdo">M</span></p>
-			</div>
-		</div>
+
+	<div class="fullscreen">
+		<header id="header" class="d-none"></header>
+		<section id="accueilBorne" class="pages"> <!-- HOME --> </section>
+		<section id="choixService" class="pages"> <!-- CHOIX SERVICE --> </section>
+		<section id="categories" class="pages">
+			<div id="containerCats" class="grid"><!-- CATEGORIES --></div>
+		</section>
+		<section id="detailCategorie" class="pages">
+			<div id="containerCat" class="grid"><!-- CHOIX PAR CATEGORIE --> </div>
+		</section>
+		<section id="detailProduit" class="pages">
+			<div id="modalInfo" class="container"><!-- MODAL INFOS --></div>
+		</section>
+		<footer id="footer" class="d-none"></footer>
 	</div>
-
-	<div id="choixService" class="fullscreen"> <!--CHOIX SERVICE-->
-		<main>
-			<section class="service">
-
-				<!--Info gerer en js c'est a dire ajout de deux cards pour la commande (sur place ou emporter)-->
-				<div class="cards">
-					<div class="card-ch" onclick="afficherCategorie()">
-						<div class="card-choice">
-							<img src="assets/images/icons/emporter.png" alt="a emporter">
-							<h2>A Emporter</h2>
-						</div>
-					</div>
-
-					<div class="card-ch" onclick="afficherCategorie()">
-						<div class="card-choice">
-							<img src="assets/images/icons/service.png" alt="sur place">
-							<h2>Sur Place</h2>
-						</div>
-					</div>
-				</div>
-				<div class="cards-lang">
-					<div class="langage">
-						<img srcset="https://flagcdn.com/w40/fr.png">
-						<p>Français</p>
-					</div>
-					<div class="langage">
-						<img srcset="https://flagcdn.com/w40/gb.png">
-						<p>English</p>
-					</div>
-					<div class="langage">
-						<img srcset="https://flagcdn.com/w40/de.png">
-						<p>Deutsch</p>
-					</div>
-					<div class="langage">
-						<img srcset="https://flagcdn.com/w40/es.png">
-						<p>Español</p>
-					</div>
-					<div class="langage">
-						<img srcset="https://flagcdn.com/w40/it.png">
-						<p>Italiano</p>
-					</div>
-					<div class="langage">
-						<img srcset="https://flagcdn.com/w40/pl.png">
-						<p>Polski</p>
-					</div>
-					<div class="langage">
-						<img srcset="https://flagcdn.com/w40/jp.png">
-						<p>日本人</p>
-					</div>
-					<div class="langage">
-						<img srcset="https://flagcdn.com/w40/lu.png">
-						<p>Nederlands</p>
-					</div>
-					<div class="langage">
-						<img srcset="https://flagcdn.com/w40/cn.png">
-						<p>中文</p>
-					</div>
-				</div>
-			</section>
-		</main>
-	</div>
-
-	<section id="categories" class="fullscreen">
-		<header class="d-none">
-			<button onclick="afficherCategorie()">retour</button>
-			<!-- classe d-none pour enlever le bouton dans la page catégories, et le header pour ne pas l'afficher sur la home et choix de commande-->
-			<h2>Titre de la page</h2>
-		</header>
-		<div class="container">
-			<div class="row">
-				<div class="grid">
-					<div class="card" onclick="openCategorie('burgers')">
-						<img src="assets/images/big_mac.webp" alt="sandwich Big mac">
-						<h3>Burgers</h3>
-					</div>
-					<div class="card" onclick="openCategorie('sides')">
-						<img src="assets/images/frites_moyennes.webp" alt="une part de frites moyennes">
-						<h3>Sides</h3>
-					</div>
-					<div class="card" onclick="openCategorie('drinks')">
-						<img src="assets/images/eau_by_mcdo.webp" alt="eau by McDo">
-						<h3>Drinks</h3>
-					</div>
-					<div class="card" onclick="openCategorie('desserts')">
-						<img src="assets/images/mcflurry_oreo.webp" alt="Glaces Mc Fleury">
-						<h3>Desserts</h3>
-					</div>
-					<div class="card" onclick="openCategorie('menus')">
-						<img src="assets/images/menu_best_of_big_mac.webp" alt="Menu Best Of Big mac">
-						<h3>Menus</h3>
-					</div>
-					<div class="card" onclick="openCategorie('happyMeal')">
-						<img src="assets/images/happy_meal_cheeseburger.webp" alt="Menu Happy Meal">
-						<h3>HappyMeal</h3>
-					</div>
-				</div>
-			</div>
-		</div>
-		<footer class="panier d-none">
-			<div class="panier-info">
-				<h2>Ma Commande:</h2>
-			</div>
-			<div id="afficherPanier" class="afficher-panier">
-				<div id="containerCommande"></div><!--j'essaie de la faire apparaitre-->
-				<!--géré en js-->
-			</div>
-			<div id="totalPanier" class="total">
-				<button onclick="validerPanier()">Valider et Payer</button>
-				<p>0,00€</p>
-			</div>
-		</footer>
-	</section>
-
-
-	<section id="detailCategorie" class="fullscreen">
-		<header class="d-none">
-			<button onclick="afficherCategorie()">retour</button>
-			<!-- classe d-none pour enlever le bouton dans la page catégories, et le header pour ne pas l'afficher sur la home et choix de commande-->
-			<h2>Titre de la page</h2>
-		</header>
-		<div class="container">
-			<div class="row">
-				<div id="detailCategorieGrid" class="grid">
-
-				</div>
-			</div>
-		</div>
-		<footer class="panier d-none">
-			<div class="panier-info">
-				<h2>Ma Commande:</h2>
-			</div>
-			<div id="afficherPanier" class="afficher-panier">
-				<!--géré en js-->
-			</div>
-			<div id="totalPanier" class="total">
-				<button onclick="validerPanier()">Valider et Payer</button>
-				<p>0,00€</p>
-			</div>
-		</footer>
-	</section>
-	<section id="detailProduit" class="fullscreen">
-		<div class="container">
-			<div class="row">
-				<div id="containerProduit" class="containerProduit">
-				</div>
-			</div>
-		</div>
-	</section>
-	
-
 </body>
 <script src="script.js"></script>
 
 </html>
+
