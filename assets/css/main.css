@@ -285,6 +285,71 @@ footer{
   margin-top: 2rem;
 }
 
+.alerte-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.alerte-popup {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+
+}
+
+.container-cmd {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  height: 100%;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.item {
+  flex: 0 0 calc(25% - 1rem);
+  border: 2px solid #264F36;
+  border-radius: 15px;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+
+
+.plus{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: solid 1px #264F36;
+  cursor: pointer;
+}
+
+.moins{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: solid 1px #264F36;
+  cursor: pointer;
+}
+
 .modal-product .cde-produit{
   margin-top: auto;
   margin-bottom: 2rem;

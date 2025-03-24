@@ -133,12 +133,13 @@ function afficherCategories() {
                             <h3>${categorie}</h3>
                         </div>`;
         container.innerHTML += cardHTML;
+
+        afficherPanier();
     }
 }
 
 function openCategorie(categorie) {
     afficherHeaderFooter("Nos produits", true);
-    let containerCommande = document.getElementById("containerCommande");
     afficherPage("detailCategorie");
 
     let container = document.getElementById("containerCat");
@@ -229,11 +230,11 @@ function afficherHeaderFooter(titre, boutonRetour) {
 			                <h2>Ma Commande:</h2>
 		                </div>
 		                <div id="afficherPanier" class="afficher-panier">
-			                <div id="containerCommande"></div> <!--j'essaie de la faire apparaitre-->
+			                <div id="containerCommande" class="container-cmd"></div> <!--j'essaie de la faire apparaitre-->
 	                    </div>
                         <div class="total">
                             <button onclick="validerPanier()">Valider et Payer</button>
-                            <p>0,00€</p>
+                            <p id="containerPrix"></p>
                         </div>`;
 
     footer.innerHTML = contenuFooter;
@@ -244,8 +245,6 @@ function cacherHeaderFooter() {
     document.getElementById("header").classList.add("d-none");
     document.getElementById("footer").classList.add("d-none");
 }
-
-
 
 function ajouterPanier(id) {
 
@@ -288,7 +287,7 @@ function ajouterPanier(id) {
                     console.log("panier: " + produit.quantite + produit.name);
                 }
                 afficherPanier();
-                afficherTotalPanier();
+                calculerTotalPanier();
                 return;
             }
         }
@@ -304,24 +303,34 @@ function baisseQuantite(id) {
           let alerteMessage = document.createElement('div');
           alerteMessage.className = "alerte";
   
-          let contenuAlerteMessage = `
-            <p>Voulez-vous supprimer ce produit ?</p>
-            <div class="alerte-actions">
-              <button onclick="suppression(${id})">Oui</button>
-              <button onclick="closeMessage()">Non</button>
-            </div>
-          `;
+          let contenuAlerteMessage =   `<div class="alerte-modal">
+                                            <div class="alerte-popup">
+                                            <p>Voulez-vous supprimer ce produit ?</p>
+                                            <div class="alerte-actions">
+                                            <button onclick="suppression(${id})">Oui</button>
+                                            <button onclick="closeMessage()">Non</button>
+                                            </div>
+                                            </div>
+                                        </div>`;
   
           alerteMessage.innerHTML = contenuAlerteMessage;
-          document.body.appendChild(alerteMessage); // ou ton container
+          document.body.appendChild(alerteMessage);
         }
   
         afficherPanier();
-        afficherTotalPanier();
+        calculerTotalPanier();
         return;
       }
     }
   }
+
+  function closeMessage() {
+        // Supprimer le message d'alerte de la commande
+        let alerte = document.querySelector('.alerte');
+        if (alerte) {
+            alerte.remove();
+        }
+    }
   
   function suppression(id) {
     for (let i = 0; i < commande.length; i++) {
@@ -333,10 +342,9 @@ function baisseQuantite(id) {
   
     closeMessage();
     afficherPanier();
-    afficherTotalPanier();
+    calculerTotalPanier();
   }
   
-
 function afficherPanier() {
     console.log("Le panier s'affiche");
     
@@ -345,12 +353,14 @@ function afficherPanier() {
     for (let i = 0; i < commande.length; i++) {
         let produit = commande[i];
         let panier =   `<div class="item">
+                            <div class="moins" onclick="baisseQuantite(${produit.id})"><p>-</p></div>            
                             <div class="item-panier">
                                 <p> ${produit.name}</p>
                             </div>
-                            <div class="item-quantité">
-                                <p>x ${produit.quantite}</p>                            
+                            <div class="item-quantite">
+                                <p>x ${produit.quantite}</p>                           
                             </div>
+                            <div class="plus" onclick="ajouterPanier(${produit.id})"><p>+</p></div>
                         </div>`;
         commandeProduit.innerHTML += panier;
     }
@@ -358,23 +368,14 @@ function afficherPanier() {
 
 function calculerTotalPanier() {
     let total = 0;
-
+    let containerPrix = document.getElementById("containerPrix");
     for (let i = 0; i < commande.length; i++) {
       let produit = commande[i];
       total += produit.price * produit.quantite;
     }
+    containerPrix.innerHTML = total + "€";
     return total.toFixed(2);
   }
-
-  function afficherTotalPanier() {
-
-    let totalElement = document.querySelector("#prixTotal p");
-    if (totalElement) {
-      totalElement.textContent = calculerTotalPanier() + "€";
-    }
-  }
-  
-  
 
 /*function openCategorie(burgers) {
    //let burgers = data.burgers
