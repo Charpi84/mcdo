@@ -3,6 +3,7 @@ let detailCategorieGrid = document.getElementById('detailCategorieGrid');
 let containerProduit = document.getElementById('containerProduit');
 let commande = [];
 let containerCommande = document.getElementById('containerCommande');
+let containerPrix = document.getElementById('containerPrix');
 
 
 fetch('mcdo.json')
@@ -133,12 +134,13 @@ function afficherCategories() {
                             <h3>${categorie}</h3>
                         </div>`;
         container.innerHTML += cardHTML;
+        afficherPanier();
     }
 }
 
 function openCategorie(categorie) {
     afficherHeaderFooter("Nos produits", true);
-    let containerCommande = document.getElementById("containerCommande");
+    //let containerCommande = document.getElementById("containerCommande");
     afficherPage("detailCategorie");
 
     let container = document.getElementById("containerCat");
@@ -229,11 +231,11 @@ function afficherHeaderFooter(titre, boutonRetour) {
 			                <h2>Ma Commande:</h2>
 		                </div>
 		                <div id="afficherPanier" class="afficher-panier">
-			                <div id="containerCommande"></div> <!--j'essaie de la faire apparaitre-->
+			                <div id="containerCommande" class="container-cmd"></div> <!--j'essaie de la faire apparaitre-->
 	                    </div>
                         <div class="total">
                             <button onclick="validerPanier()">Valider et Payer</button>
-                            <p>0,00€</p>
+                            <p id="containerPrix"></p>
                         </div>`;
 
     footer.innerHTML = contenuFooter;
@@ -288,7 +290,7 @@ function ajouterPanier(id) {
                     console.log("panier: " + produit.quantite + produit.name);
                 }
                 afficherPanier();
-                afficherTotalPanier();
+                calculerTotalPanier();
                 return;
             }
         }
@@ -313,11 +315,11 @@ function baisseQuantite(id) {
           `;
   
           alerteMessage.innerHTML = contenuAlerteMessage;
-          document.body.appendChild(alerteMessage); // ou ton container
+          commandeProduit.appendChild(alerteMessage); // ou ton container
         }
   
         afficherPanier();
-        afficherTotalPanier();
+        calculerTotalPanier();
         return;
       }
     }
@@ -333,7 +335,7 @@ function baisseQuantite(id) {
   
     closeMessage();
     afficherPanier();
-    afficherTotalPanier();
+    calculerTotalPanier();
   }
   
 
@@ -345,36 +347,101 @@ function afficherPanier() {
     for (let i = 0; i < commande.length; i++) {
         let produit = commande[i];
         let panier =   `<div class="item">
+                            <div class="moins" onclick="baisseQuantite(${produit.id})"><p>-</p></div>
                             <div class="item-panier">
                                 <p> ${produit.name}</p>
                             </div>
-                            <div class="item-quantité">
-                                <p>x ${produit.quantite}</p>                            
+                            <div class="item-quantite">
+                                <p>x ${produit.quantite}</p>
                             </div>
+                            <div class="plus" onclick="ajouterPanier(${produit.id})"><p>+</p></div>
                         </div>`;
         commandeProduit.innerHTML += panier;
     }
+    
 }
 
 function calculerTotalPanier() {
     let total = 0;
+    let containerPrix = document.getElementById('containerPrix');
+    containerPrix.innerHTML ="";
 
     for (let i = 0; i < commande.length; i++) {
       let produit = commande[i];
-      total += produit.price * produit.quantite;
-    }
-    return total.toFixed(2);
+      total += produit.price * produit.quantite; //le fait de mettre += permet de cumuler le total à chaque boucle au lieu de le remplacer
+    } 
+    containerPrix.innerHTML = total + "€";
+    return total.toFixed(2); //toFixed arrete le nombre à 2 chiffres après la virgule
+    
   }
 
-  function afficherTotalPanier() {
+
+
+  /*function afficherTotalPanier() {
 
     let totalElement = document.querySelector("#prixTotal p");
     if (totalElement) {
       totalElement.textContent = calculerTotalPanier() + "€";
     }
-  }
+  }*/
   
-  
+/-----------------------Fonction pour ajouter 1 qtte------------------------------/
+
+//cette fonction peut etre remplacé par ajoutPanier dans le bouton on click
+    function ajoutQuantite(id) {
+
+        //Pour augmenter la quantité, on commence à chercher l'id lié à la fonction dans le tableau de commande.
+        //Quand il est trouvé, on ajoute 1
+        for ( let i = 0; i < commande.length; i++) {
+            if (commande[i].id === id) {
+                commande[i].quantite++;
+            }
+        }
+        //Ne pas oublier de réafficher la liste à jour avec la nouvelle quantité
+        afficherPanier();
+    }
+/-----------------------Fonction pour baisser qtte ou supprimer le pdt-------------/
+    function baisseQuantite(id) {
+
+        //Pour baisser la quantité, on commence à chercher l'id lié à la fonction dans le tableau de commande.
+        //Quand il est trouvé, on enleve 1 si la quantité et supérieur à 1
+        for ( let i = 0; i < commande.length; i++) {
+            if (commande[i].id === id) {
+                if (commande[i].quantite > 1) {
+                    commande[i].quantite--;
+                } 
+                // si la quantité est inférieur à 1, ouvrir une fenetre demandant la validation de la suppression 
+                // et supprimer le produit de la commande.
+                else {
+                    let alerteMessage = document.createElement('div');
+                    alerteMessage.className = "alerte";
+                    let contenuAlerteMessage =   `<div class="alerte-modal">
+                                            <div class="alerte-popup">
+                                            <p>Voulez-vous supprimer ce produit ?</p>
+                                            <div class="alerte-actions">
+                                            <button onclick="suppression(${id})">Oui</button>
+                                            <button onclick="closeMessage()">Non</button>
+                                            </div>
+                                            </div>
+                                        </div>`;
+                    alerteMessage.innerHTML = contenuAlerteMessage;
+                    document.body.appendChild(alerteMessage);
+                }
+                break;
+
+            }
+        }
+        //Ne pas oublier de réafficher la liste à jour avec la nouvelle quantité
+        afficherPanier();
+    }
+
+    function closeMessage() {
+        // Supprimer le message d'alerte de la commande
+        let alerte = document.querySelector('.alerte');
+        if (alerte) {
+            alerte.remove();
+        }
+    }
 
 /*function openCategorie(burgers) {
    //let burgers = data.burgers
