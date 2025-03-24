@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "speedee";
+  text-transform: capitalize;
 }
 
 @font-face {
@@ -114,11 +115,10 @@ button{
   border-radius: 10px;
   font-size: 2rem;
   text-transform: capitalize;
-  margin: 0 5rem
+  margin: 0 3rem
 }
 
-.container {
-  height: 100%;
+.pages {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -147,7 +147,7 @@ button{
 .card-choice {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 3rem;
   align-items: center;
 }
 
@@ -244,9 +244,11 @@ footer{
 }
 
 .info-btn{
+  pointer-events: auto;
   position: absolute;
   top: 0;
   right: 0;
+  
   margin: 0;
   background-color: #c9c9c9;
   width: 70px;
@@ -256,12 +258,39 @@ footer{
 }
 
 .modal-product{
-  width: 90vw;
-  height: 90vh;
+  width: 70vw;
+  height: 50vh;
   border: solid 15px #264F36;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
+  border-radius: 15px;
 }
-/*.d-none{
-  display:none
+.modal-product img{
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.384);
+  border-radius: 15px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.fermer{
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  margin-top: 2rem;
+}
+
+.modal-product .cde-produit{
+  margin-top: auto;
+  margin-bottom: 2rem;
+}
+.d-none{
+  display:none !important;
 }
 
 /*# sourceMappingURL=main.css.map */
